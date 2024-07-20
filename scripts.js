@@ -161,6 +161,9 @@ COMPARISON OPERATORS
     Less than or equal to: <=
     Greater than or equal to: >=
     Is equal to: ===
+    I RECOMMEND U USE === BECAUSE == will return true even if the values are off different types
+    '1' == 1 Returns true even though one is a string and the other is a number
+    '1' === 1 Returns false
     Is not equal to: !==
 
     'apples' === 'oranges' will evaluate to false
