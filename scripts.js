@@ -97,7 +97,7 @@ BUILT IN OBJECTS
     Math.floor(Math.random() * 50);
 
 
-    A LITTLE REVIEW: 
+A LITTLE REVIEW: 
     Data is printed, or logged, to the console, a panel that displays messages, with console.log().
 
     Numbers are any number without quotes: 23.8879
@@ -116,43 +116,234 @@ BUILT IN OBJECTS
 
 CONDITIONAL STATEMENTS
 
-IF...else statement structure
-let sale= false;
-if(sale == true){
-    console.log("Time to buy!");
-}
-else{
-    console.log("Wait for a sale")
-}   
+    If...else statement structure
+    let sale= false;
+    if(sale == true){
+        console.log("Time to buy!");
+    }
+    else{
+        console.log("Wait for a sale")
+    }   
+
+    The else statement must be paired with an if statement. 
+    We can also use else...if before the else to allow for more than two possible outcomes.
+
+    Switch keyword- Used to simplify the process of writing multiple else if statements
+
+    let groceryItem = 'papaya';
+
+    switch (groceryItem) {
+    case 'tomato':
+        console.log('Tomatoes are $0.49');
+        break;
+    case 'lime':
+        console.log('Limes are $1.49');
+        break;
+    case 'papaya':
+        console.log('Papayas are $1.29');
+        break;
+    default:  
+        console.log('Invalid item');
+        break;
+    }
+
+    // Prints 'Papayas are $1.29'
+
+    Note: Without break keywords, the first matching case will run, but so will every subsequent case regardless of whether 
+    or not it matches—including the default. This behavior is different from if/else conditional statements that execute 
+    only one block of code.
+
+    The default statement is evaluated if none of the conditions are true.
 
 COMPARISON OPERATORS
-Less than: <
-Greater than: >
-Less than or equal to: <=
-Greater than or equal to: >=
-Is equal to: ===
-Is not equal to: !==
+    Less than: <
+    Greater than: >
+    Less than or equal to: <=
+    Greater than or equal to: >=
+    Is equal to: ===
+    Is not equal to: !==
 
-'apples' === 'oranges' will evaluate to false
+    'apples' === 'oranges' will evaluate to false
 
-The else statement must be paired with an if statement. 
+LOGICAL OPERATORS
+
+    and (&&) Checks if two conditions are true
+
+    if(weather === 'sunny' &&  day === 'Sunday'){
+    console.log('Go to beach with family');
+    } else{
+    console.log('Stay home');
+    }
+
+    or(||)  Checks if one of the conditions is true
+    not(!) Reverses or negates the value 
+
+    let happy= true;
+    console.log(!happy); Prints false
+
+
+TRUTHY AND FALSY
+
+    let val= "Exists";
+    if(val){
+        console.log(val)
+        } else{
+        console.log('The variable doesn't exist');
+        }
+
+    In this example, the code block in the if statement will run because val has a truthy value. So even though it is
+    not explicitly the value true, when used in a boolean or conditional context, it will evaluate to true.
+
+    Falsy Values 
+    0
+    Empty strings like '' or ""
+    null which represents that there is no value at all
+    NaN (not a number)
+    undefined which represents when there is no value at all
+
+    let username='';
+    let defaultname= username || 'Stranger';
+    console.log(defaultName);  Prints Stranger
+
+TERNARY OPERATOR- Used to simplify an if...else statement
+
+    isNightTime? console.log('Turn on the lights!) : console.log('Turn off the lights!');
+
+2ND REVIEW
+
+An if statement checks a condition and will execute a task if that condition evaluates to true.
+
+if...else statements make binary decisions and execute different code blocks based on a provided condition.
+
+We can add more conditions using else if statements.
+
+Comparison operators, including <, >, <=, >=, ===, and !== can compare two values.
+
+The logical and operator, &&, or “and”, checks if both provided expressions are truthy.
+
+The logical operator ||, or “or”, checks if either provided expression is truthy.
+
+The not operator, !, switches the truthiness and falsiness of a value.
+
+The ternary operator is shorthand to simplify concise if...else statements.
+
+A switch statement can be used to simplify the process of writing multiple else if statements. 
+The break keyword stops the remaining cases from being checked and executed in a switch statement.
+
+
+FUNCTION- A function is a reusable block of code that groups together a sequence of statements to perform a specific task.
+
+    Function Declaration
+    function greetWorld(){
+    console.log('Hello, World!');
+    }
+
+    Hoisting- feature in JavaScript which allows access to function declarations before they’re defined.
+    NOT GOOD PRACTICE
+
+    greetWorld();   Output: Hello, World!
+
+    function greetWorld() {
+        console.log('Hello, World!');
+    }
+    
+    Use greetWorld() to call the function
+
+PARAMETERS 
+
+    Some functions can take inputs and use the inputs to perform a task. When declaring a function, 
+    we can specify its parameters. Parameters allow functions to accept input(s) and perform a task using the input(s).
+    
+    DEFAULT PARAMETERS- Gives the function parameters a default value in cause no arguments are passed
+    function greeting (name = 'stranger') {
+         console.log(`Hello, ${name}!`)
+    }
+
+    greeting('Nick') // Output: Hello, Nick!
+    greeting() // Output: Hello, stranger!
+
+ARGUMENTS
+    The values that are passed to the function when it is called are called arguments. 
+    Arguments can be passed to the function as values or variables.
+
+    function sayThanks(name) {
+        console.log('Thank you for your purchase ' +name+ '! We appreciate your business.');
+    }
+
+    sayThanks('Cole');
+
+RETURN 
+
+    When a function is called, the computer will run through the function’s code and evaluate the result. By default, the resulting value is undefined.
+
+    function rectangleArea(width, height) {
+    let area = width * height;
+    }
+
+    console.log(rectangleArea(5, 7))  Prints undefined because we didn't use a return statement
+
+    function rectangleArea(width, height) {
+        if (width < 0 || height < 0) {
+            return 'You need positive integers to calculate area!';
+    }
+    return width * height;
+    }
+
+HELPER FUNCTIONS
+
+    We can also use the return value of a function inside another function. 
+     Since each function is carrying out a specific task, it makes our code easier to read and debug if necessary.
+
+    If we wanted to define a function that converts the temperature from Celsius to Fahrenheit, we could write two functions like:
+
+    function multiplyByNineFifths(number) {
+        return number * (9/5);
+    };
+
+    function getFahrenheit(celsius) {
+        return multiplyByNineFifths(celsius) + 32;
+    };
+
+    getFahrenheit(15); // Returns 59
+
+FUNCTION EXPRESSIONS
+
+     To define a function inside an expression, we can use the function keyword. In a function expression, 
+     the function name is usually omitted. A function with no name is called an anonymous function. 
+     A function expression is often stored in a variable in order to refer to it.
+
+    const plantNeedsWater= function(day, plantNeedsWater){
+        if (day === 'Wednesday'){
+            return true;
+        }
+        else{
+            return false;
+        }
+        };
+
+    plantNeedsWater('Tuesday');
+    console.log(plantNeedsWater('Tuesday'));
+
+    NOTE: Unlike function declarations, function expressions are not hoisted so they cannot 
+    be called before they are defined.
+
 */
 
 //DOM = DOCUMENT OBJECT MODEL
 /*
-Object{} that represents the page you see in the web browser and provides you with an API to interact with it. 
-Web browser constructs the DOM when it loads the HTML document, and structures all the elements in a tree-like representation.
-Javascript can access the DOM to dynamically change the content, structure and style of a web page.
+    Object{} that represents the page you see in the web browser and provides you with an API to interact with it. 
+    Web browser constructs the DOM when it loads the HTML document, and structures all the elements in a tree-like representation.
+    Javascript can access the DOM to dynamically change the content, structure and style of a web page.
 
-Explanation: https://youtu.be/NO5kUNxGIu0?si=t1MUM8eL1LPf4L_I
+    Explanation: https://youtu.be/NO5kUNxGIu0?si=t1MUM8eL1LPf4L_I
 
-Element Selectors= Methods used to target and manipulate HTML elements. They allow you to select one or multiple HTML 
-elements from the DOM(Document Object Model).
+    Element Selectors= Methods used to target and manipulate HTML elements. They allow you to select one or multiple HTML 
+    elements from the DOM(Document Object Model).
 
-1. document.getElementById() //Element or Null
-2. document.getElementsClassName() 
-3. document.getElementsByTagName()
-*/
+    1. document.getElementById() //Element or Null
+    2. document.getElementsClassName() 
+    3. document.getElementsByTagName()
+    */
 
 
 const choices= ["rock","paper","scissors"];
